@@ -1,0 +1,36 @@
+version: '3'
+services:
+  
+  db:
+    build:
+      context: .docker/postgres
+    container_name: postgres_otus_db
+    expose:
+      - ${DB_PORT}
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - ./.docker/volumes/postgres/data:/var/lib/postgresql/data
+      - ./.docker/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+
+
+  db_client:
+    build:
+      context: .docker/postgres_client
+    container_name: db_client
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      PGDATABASE: ${DB_DATABASE}
+      PGHOST: ${PG_HOST}
+      PGPORT: 5432
+      PGUSER: ${DB_USERNAME}
+      PGPASSWORD: ${DB_PASSWORD}
+      
