@@ -158,4 +158,4 @@ Creating postgres_db_client_run ... done
 
 ```
 
-> Хотел в разных docker-compose но так нельзя если только на базе не делать network-mode: host
+> Хотел в разных docker-compose но так нельзя если только на базе не делать network-mode: host или сеть external
