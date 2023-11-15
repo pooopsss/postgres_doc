@@ -6,3 +6,5 @@
 - [Работа с базами данных, пользователями и правами](https://github.com/pooopsss/postgres_doc/tree/main/tut_5)
 - [Настройка autovacuum с учетом особеностей производительности](https://github.com/pooopsss/postgres_doc/tree/main/tut_6)
 - [Работа с журналами](https://github.com/pooopsss/postgres_doc/tree/main/tut_7)
+- [Механизм блокировок](https://github.com/pooopsss/postgres_doc/tree/main/tut_8)
+
