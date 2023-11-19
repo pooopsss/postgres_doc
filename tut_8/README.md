@@ -70,7 +70,7 @@ locktype    |   relation    | virtxid |   xid   |       mode       | granted
 
 ![blockList](table_1.png)
 
-###Блокировки объектов
+### Блокировки объектов
 **Типы ресурсов (столбцом locktype в pg_locks):**
 • Relation — Блокировки отношений
 • Transactionid — транзакция
@@ -124,7 +124,7 @@ locktype |       mode       | granted |  pid  | wait_for
 
 ```
 
-> RowExclusiveLock - блокировки на realtions - со связями wait_for. 1 - 1587, 2 - 1651, 3 - 15192. Как и вводили. Tuple говорит о блокировки версии строки. т.к. именну одну и туже меняли.
+> RowExclusiveLock - блокировки на realtions - со связями wait_for. 1 - 1587, 2 - 1651, 3 - 15192. Как и вводили. Tuple говорит о блокировки версии строки. т.к. именно одну и туже меняли.
 
 > ExclusiveLock(tuple|15192) - в granted - false, потому что пытаясь получить эксклюзивную блокировку натыкается на то что уже такая блокировка стоит ExclusiveLock(tuple|1651)
 
