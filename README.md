@@ -9,4 +9,7 @@
 - [Механизм блокировок](https://github.com/pooopsss/postgres_doc/tree/main/tut_8)
 - [Нагрузочное тестирование и тюнинг PostgreSQL](https://github.com/pooopsss/postgres_doc/tree/main/tut_9)
 - [Бэкапы](https://github.com/pooopsss/postgres_doc/tree/main/tut_10)
+- [Репликация](https://github.com/pooopsss/postgres_doc/tree/main/tut_11)
+- [Виды индексов. Работа с индексами и оптимизация запросов](https://github.com/pooopsss/postgres_doc/tree/main/tut_12)
+
 
