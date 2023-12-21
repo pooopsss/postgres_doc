@@ -1,0 +1,77 @@
+version: '3'
+services:
+  
+  db1:
+    build:
+      context: .docker/1/postgres
+    container_name: postgres_otus_db_1
+    ports:
+      - ${DB_PORT_1}:5432
+    
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - ./.docker/1/volumes/postgres/data:/var/lib/postgresql/data
+      - ./.docker/1/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+
+
+  db2:
+    build:
+      context: .docker/2/postgres
+    container_name: postgres_otus_db_2
+    ports:
+      - ${DB_PORT_2}:5432
+    depends_on:
+      - db1
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - ./.docker/2/volumes/postgres/data:/var/lib/postgresql/data
+      - ./.docker/2/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+
+  db3:
+    build:
+      context: .docker/3/postgres
+    container_name: postgres_otus_db_3
+    ports:
+      - ${DB_PORT_3}:5432
+    depends_on:
+      - db1
+      - db2
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - ./.docker/3/volumes/postgres/data:/var/lib/postgresql/data
+      - ./.docker/3/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+
+  db4:
+    build:
+      context: .docker/4/postgres
+    container_name: postgres_otus_db_4
+    ports:
+      - ${DB_PORT_4}:5432
+    depends_on:
+      - db3
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - ./.docker/4/volumes/postgres/data:/var/lib/postgresql/data
+      #- ./.docker/4/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+      
+     
+     
+     
+
+      
