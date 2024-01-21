@@ -241,3 +241,24 @@ explain analyze select * from bookings.flights_hash limit 3;
 
 
 ```
+
+
+
+
+### P.S. Для себя
+Декларативнýй способ:
+- Можно создаватþ дефолтную секцию:
+○ create table part_name partition of main_table default;
+- Можно исполþзоватþ минималþное, максималþное значение для range partition
+○ create table part_name partition of main_table for values from (MINVALUE) to (MAXVALUE);
+- Можно отсоединять секции:
+○ alter table main_table detach partition part_name;
+- Можно добавлāть секции:
+○ alter table main_table attach partition part_name for values from (‘2020-01-01’) to
+(‘2020-02-01’);
+- Не забыть включить enable_partition_pruning длā оптимизации (default on).
+
+Трудности:
+- В partition by range не получится использовать в ключе секционирования null значения;
+- Не умеет создавать секции самостоāтельно (можно использовать cron и прочее);
+- Не получится создать уникальное ограничение на часть.

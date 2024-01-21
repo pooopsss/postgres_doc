@@ -12,7 +12,7 @@
 - [Репликация](https://github.com/pooopsss/postgres_doc/tree/main/tut_11)
 - [Виды индексов. Работа с индексами и оптимизация запросов](https://github.com/pooopsss/postgres_doc/tree/main/tut_12)
 - [Работа с join'ами, статистикой](https://github.com/pooopsss/postgres_doc/tree/main/tut_13)
-
+- [Секционирование таблицы](https://github.com/pooopsss/postgres_doc/tree/main/tut_14)
 
 
 
