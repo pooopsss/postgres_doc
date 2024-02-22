@@ -162,6 +162,19 @@ Planning Time: 0.059 ms
 Execution Time: 3.382 ms
 
 
+
+
+explain analyze 
+select * from public.package_items where package_items.data @> '[{"folders": [{"document": {"file_id": 14}}]}]'
+Bitmap Heap Scan on package_items  (cost=36.04..52.15 rows=5 width=765) (actual time=0.081..2.716 rows=2 loops=1)
+  Recheck Cond: (data @> '[{"folders": [{"document": {"file_id": 14}}]}]'::jsonb)
+  Rows Removed by Index Recheck: 153
+  Heap Blocks: exact=69
+  ->  Bitmap Index Scan on data_gin_full  (cost=0.00..36.04 rows=5 width=0) (actual time=0.036..0.038 rows=155 loops=1)
+        Index Cond: (data @> '[{"folders": [{"document": {"file_id": 14}}]}]'::jsonb)
+Planning Time: 0.102 ms
+Execution Time: 2.741 ms
+
 ```
 
 
@@ -186,6 +199,7 @@ Execution Time: 3.382 ms
 3. Большие структуры плохо индексируются
 4. Нужен кнотроль структур данных. Иначе нагомзить можно
 5. Если изменять часть большой структуры, то или нужно блокировать остальных на эти же данных на изменение ну или использовать различные функции
+6. Старатся использовать явные операторы при выборке, а не функциями
 
 
 
